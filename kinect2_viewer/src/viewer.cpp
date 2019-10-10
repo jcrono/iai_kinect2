@@ -31,7 +31,11 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/visualization/cloud_viewer.h>
 
-#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/calib3d.hpp>
 
 #include <ros/ros.h>
 #include <ros/spinner.h>
@@ -222,7 +226,7 @@ private:
     {
       cv::Mat tmp;
       color.convertTo(tmp, CV_8U, 0.02);
-      cv::cvtColor(tmp, color, CV_GRAY2BGR);
+      cv::cvtColor(tmp, color, cv::COLOR_GRAY2BGR);
     }
 
     lock.lock();
@@ -276,7 +280,7 @@ private:
         combine(color, depthDisp, combined);
         //combined = color;
 
-        cv::putText(combined, oss.str(), pos, font, sizeText, colorText, lineText, CV_AA);
+        cv::putText(combined, oss.str(), pos, font, sizeText, colorText, lineText, cv::LINE_AA);
         cv::imshow("Image Viewer", combined);
       }
 

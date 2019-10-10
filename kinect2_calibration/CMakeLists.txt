@@ -22,7 +22,7 @@ ENDIF()
 find_package(catkin REQUIRED COMPONENTS roscpp rostime std_msgs sensor_msgs message_filters cv_bridge image_transport compressed_image_transport compressed_depth_image_transport kinect2_bridge)
 
 ## System dependencies are found with CMake's conventions
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 find_package(OpenMP)
 
 if(OPENMP_FOUND)
@@ -70,7 +70,7 @@ include_directories(include
 add_executable(kinect2_calibration src/kinect2_calibration.cpp)
 target_link_libraries(kinect2_calibration
   ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
+  ${OpenCV_LIBS}
 )
 
 #############
