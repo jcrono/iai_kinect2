@@ -26,7 +26,7 @@ find_package(catkin REQUIRED COMPONENTS roscpp)
 find_package(cmake_modules QUIET)
 
 ## System dependencies are found with CMake's conventions
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 find_package(OpenMP)
 find_package(Eigen3)
 find_package(OpenCL)
@@ -125,7 +125,7 @@ endif()
 add_library(kinect2_registration SHARED src/kinect2_registration.cpp ${MODULES})
 target_link_libraries(kinect2_registration
   ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
+  ${OpenCV_LIBS}
   ${MODULE_LIBS}
 )
 
